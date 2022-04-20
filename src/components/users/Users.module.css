@@ -1,0 +1,10 @@
+.usersBox{
+    background-color: silver;
+    display: flex;
+}
+.usersBox>div{
+    width: 50%;
+}
+.usersBox:nth-child(1){
+    border-right: 2px solid black;
+}

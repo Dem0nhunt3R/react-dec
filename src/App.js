@@ -1,7 +1,10 @@
+import {Users} from "./components";
+
 function App() {
+
     return (
-        <div className="wrap">
-            Hello
+        <div>
+            <Users/>
         </div>
     );
 }
