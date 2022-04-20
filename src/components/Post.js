@@ -1,9 +1,12 @@
 import React from 'react';
 
 const Post = ({post}) => {
+
+    const {id, title} = post;
+
     return (
         <div>
-            {post.id} -- {post.title}
+            {id} -- {title}
         </div>
     );
 };

@@ -1,7 +1,0 @@
-.usersBox{
-    background-color: silver;
-    display: flex;
-}
-.usersBox>div{
-    width: 50%;
-}

@@ -1,0 +1,8 @@
+.userBox{
+    display: flex;
+    background-color: silver;
+}
+
+.userBox>div{
+    width: 50%;
+}
