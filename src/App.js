@@ -1,6 +1,7 @@
 function App() {
+
     return (
-        <div className="wrap">
+        <div>
             Hello
         </div>
     );
