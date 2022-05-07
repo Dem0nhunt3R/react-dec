@@ -1,0 +1,19 @@
+.box {
+    display: flex;
+    min-height: 500px;
+}
+
+.box > div {
+    width: 50%;
+}
+
+.list {
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.details {
+    background-color: pink;
+}
