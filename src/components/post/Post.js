@@ -7,8 +7,7 @@ const Post = ({post}) => {
 
     return (
         <div>
-            id -- {id} <br/>
-            title -- {title} <br/>
+            {id} -- {title} --
             <Button to={id.toString()} state={post}>details</Button>
             <hr/>
         </div>
