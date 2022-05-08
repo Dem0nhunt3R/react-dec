@@ -5,7 +5,8 @@ import {MainLayout} from "./layouts/mainLayout/MainLayout";
 import {
     AboutPage,
     HomePage,
-    NotFoundPage, PostComments,
+    NotFoundPage,
+    PostComments,
     PostsPage,
     SinglePostPage,
     SingleUserPage,
@@ -21,12 +22,12 @@ const App = () => {
                 <Route index element={<Navigate to={'home'}/>}/>
                 <Route path={'home'} element={<HomePage/>}/>
                 <Route path={'users'} element={<UsersPage/>}>
-                    <Route path={':id'} element={<SingleUserPage/>}>
+                    <Route path={':userId'} element={<SingleUserPage/>}>
                         <Route path={'posts'} element={<UserPosts/>}/>
                     </Route>
                 </Route>
                 <Route path={'posts'} element={<PostsPage/>}>
-                    <Route path={':id'} element={<SinglePostPage/>}>
+                    <Route path={':postId'} element={<SinglePostPage/>}>
                         <Route path={'comments'} element={<PostComments/>}/>
                     </Route>
                 </Route>

@@ -6,16 +6,16 @@ import {UserDetails} from "../../components";
 const SingleUserPage = () => {
 
     const {state} = useState();
-    const {id} = useParams();
+    const {userId} = useParams();
     const [user, setUser] = useState(state);
 
     useEffect(() => {
         if (!state) {
-            userService.getUserById(id).then(({data}) => setUser(data));
+            userService.getUserById(userId).then(({data}) => setUser(data));
         } else {
             setUser(state);
         }
-    }, [id, state]);
+    }, [userId, state]);
     return (
         <div>
             {user && <UserDetails user={user}/>}

@@ -1,13 +1,13 @@
 import React from 'react';
+import {Button} from "../button/Button";
 
 const Post = ({post}) => {
-
     const {id,title} = post;
 
     return (
         <div>
             {id} -- {title} --
-            <button>details</button>
+            <Button to={id.toString()} state={post}>details</Button>
         </div>
     );
 };

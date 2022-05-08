@@ -6,12 +6,12 @@ import {UserPost} from "../../components";
 
 const UserPosts = () => {
 
-    const {id} = useParams();
+    const {userId} = useParams();
     const [userPosts, setUserPosts] = useState([]);
 
     useEffect(() => {
-        userService.getUserPosts(id).then(({data}) => setUserPosts([...data]))
-    }, [id]);
+        userService.getUserPosts(userId).then(({data}) => setUserPosts([...data]))
+    }, [userId]);
 
     return (
         <div>

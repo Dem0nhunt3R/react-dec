@@ -3,8 +3,8 @@ import {urls} from "../constants";
 
 const userService = {
     getUsers: () => axiosService.get(urls.users),
-    getUserById: (id) => axiosService.get(urls.users + '/' + id),
-    getUserPosts:(id)=>axiosService.get(urls.users+'/'+id+'/posts')
+    getUserById: (userId) => axiosService.get(urls.users + '/' + userId),
+    getUserPosts:(userId)=>axiosService.get(urls.users+'/'+userId+'/posts')
 }
 
 export {userService};

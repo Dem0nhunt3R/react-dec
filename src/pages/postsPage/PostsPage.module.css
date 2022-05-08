@@ -1,3 +1,12 @@
-.content{
+.list{
     background-color: pink;
+    width: 50%;
+}
+.content{
+    background-color: aquamarine;
+    width: 50%;
+}
+
+.box{
+    display: flex;
 }

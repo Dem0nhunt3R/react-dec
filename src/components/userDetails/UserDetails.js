@@ -1,10 +1,9 @@
 import React from 'react';
-import {Outlet, useLocation} from "react-router-dom";
+import {Outlet} from "react-router-dom";
 
 import {Button} from "../button/Button";
 
 const UserDetails = ({user}) => {
-    const {pathname} = useLocation();
     const {id, name, username, email, phone} = user;
 
 
@@ -16,7 +15,7 @@ const UserDetails = ({user}) => {
                 <p>{username}</p>
                 <p>{email}</p>
                 <p>{phone}</p>
-                <Button to={pathname + '/posts'} state={id}>posts</Button>
+                <Button to={'posts'}>posts</Button>
             </div>
             <hr/>
             <div>

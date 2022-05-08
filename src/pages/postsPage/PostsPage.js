@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
+import {Outlet} from "react-router-dom";
 
 import css from './PostsPage.module.css';
 import {postService} from "../../services";
 import {Post} from "../../components";
 
 const PostsPage = () => {
-
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -13,8 +13,13 @@ const PostsPage = () => {
     }, []);
 
     return (
-        <div className={css.content}>
-            {posts.map(post => <Post key={post.id} post={post}/>)}
+        <div className={css.box}>
+            <div className={css.list}>
+                {posts.map(post => <Post key={post.id} post={post}/>)}
+            </div>
+            <div className={css.content}>
+                <Outlet/>
+            </div>
         </div>
     );
 };
