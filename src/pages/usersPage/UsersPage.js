@@ -6,7 +6,6 @@ import {userService} from "../../services";
 import {User} from "../../components";
 
 const UsersPage = () => {
-
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -14,7 +13,7 @@ const UsersPage = () => {
     }, []);
 
     return (
-        <div className={css.box}>
+        <div className={css.content}>
             <div className={css.list}>
                 {users.map(user => <User key={user.id} user={user}/>)}
             </div>
@@ -22,6 +21,7 @@ const UsersPage = () => {
                 <Outlet/>
             </div>
         </div>
+
     );
 };
 

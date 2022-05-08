@@ -7,7 +7,7 @@ const User = ({user}) => {
     return (
         <div>
             {id} -- {name} --
-            <Button to={id.toString()} state={user}>details</Button>
+            <Button to={id.toString()} state={user}>show details</Button>
         </div>
     );
 };

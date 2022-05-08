@@ -1,12 +1,12 @@
-.list{
-    background-color: pink;
-    width: 50%;
-}
 .content{
-    background-color: aquamarine;
+    display: flex;
+}
+.content>div{
     width: 50%;
 }
-
-.box{
-    display: flex;
+.list{
+    background-color:yellow ;
+}
+.details{
+    background-color: aquamarine;
 }

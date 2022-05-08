@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {Outlet, useParams} from "react-router-dom";
 import {userService} from "../../services";
 import {UserDetails} from "../../components";
 
 const SingleUserPage = () => {
-
     const {state} = useState();
-    const {userId} = useParams();
     const [user, setUser] = useState(state);
+    const {userId} = useParams();
 
     useEffect(() => {
         if (!state) {
@@ -15,10 +14,16 @@ const SingleUserPage = () => {
         } else {
             setUser(state);
         }
-    }, [userId, state]);
+    }, [state, userId]);
+
     return (
         <div>
-            {user && <UserDetails user={user}/>}
+            <div>
+                {user && <UserDetails user={user}/>}
+            </div>
+            <div>
+                <Outlet/>
+            </div>
         </div>
     );
 };

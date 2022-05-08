@@ -9,15 +9,15 @@ const PostsPage = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        postService.getPosts().then(({data}) => setPosts([...data]));
+        postService.getPosts().then(({data}) => setPosts([...data]))
     }, []);
 
     return (
-        <div className={css.box}>
+        <div className={css.content}>
             <div className={css.list}>
-                {posts.map(post => <Post key={post.id} post={post}/>)}
+                {posts && posts.map(post => <Post key={post.id} post={post}/>)}
             </div>
-            <div className={css.content}>
+            <div className={css.details}>
                 <Outlet/>
             </div>
         </div>

@@ -1,25 +1,29 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {Outlet, useParams} from "react-router-dom";
 
 import {postService} from "../../services";
 import {PostDetails} from "../../components";
 
 const SinglePostPage = () => {
-    const {postId} = useParams();
     const {state} = useState();
+    const {postId} = useParams();
     const [post, setPost] = useState(state);
 
     useEffect(() => {
-        if (!state) {
+        if (!state)
             postService.getPostById(postId).then(({data}) => setPost(data));
-        } else {
+        else
             setPost(state);
-        }
-    }, [postId, state]);
+    }, [state, postId]);
 
     return (
         <div>
-            {post && <PostDetails post={post}/>}
+            <div>
+                {post && <PostDetails post={post}/>}
+            </div>
+            <div>
+                <Outlet/>
+            </div>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-const Button = ({children, to, state}) => {
+const Button = ({to, state, children}) => {
     return (
         <Link to={to} state={state}>
             <button>{children}</button>

@@ -1,15 +1,15 @@
 import React from 'react';
 
 const PostComment = ({comment}) => {
-    const {id, postId, email, name, body} = comment;
+    const {postId,id,name,email,body} = comment;
 
     return (
         <div>
+            postId -- {postId} <br/>
             id -- {id} <br/>
-            post id -- {postId} <br/>
             name -- {name} <br/>
             email -- {email} <br/>
-            body: {body}
+            body -- {body} <br/>
             <hr/>
         </div>
     );

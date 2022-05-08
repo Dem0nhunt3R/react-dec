@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 
+import css from './UserPostPage.module.css';
 import {userService} from "../../services";
 import {UserPost} from "../../components";
 
-const UserPosts = () => {
-
+const UserPostsPage = () => {
     const {userId} = useParams();
     const [userPosts, setUserPosts] = useState([]);
 
@@ -14,10 +14,10 @@ const UserPosts = () => {
     }, [userId]);
 
     return (
-        <div>
-            {userPosts.map(userPost => <UserPost key={userPost.id} post={userPost}/>)}
+        <div className={css.list}>
+            {userPosts.map(post => <UserPost key={post.id} post={post}/>)}
         </div>
     );
 };
 
-export {UserPosts};
+export {UserPostsPage};
