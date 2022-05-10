@@ -18,10 +18,15 @@ const reducer = (state, action) => {
         case 'dogSubmit':
             return {...state, dogs: [...state.dogs, payload]};
         case'dogDelete':
-            const indexOf = state.dogs.indexOf(payload);
-            state.dogs.splice(indexOf, 1);
+            const indexOfDogs = state.dogs.indexOf(payload);
+            state.dogs.splice(indexOfDogs, 1);
             console.log('splicing dogs')
             return {...state, dogs: [...state.dogs]};
+        case'catDelete':
+            const indexOfCats = state.cats.indexOf(payload);
+            state.cats.splice(indexOfCats, 1);
+            console.log('splicing cat '+indexOfCats)
+            return {...state, cats: [...state.cats]};
         default:
             return state;
     }
@@ -62,9 +67,12 @@ const App = () => {
         }
     }
 
-    function dogDelete(dog) {
-        console.log(dog);
+    const dogDelete=(dog)=> {
         dispatch({type: 'dogDelete', payload: dog});
+    }
+
+    const catDelete=(cat)=> {
+        dispatch({type: 'catDelete', payload: cat});
     }
 
     return (
@@ -86,6 +94,7 @@ const App = () => {
                     {state.cats && state.cats.map(cat => <Cat
                         key={state.cats.indexOf(cat)}
                         cat={cat}
+                        catDelete={catDelete}
                     />)}
                 </div>
                 <div>
