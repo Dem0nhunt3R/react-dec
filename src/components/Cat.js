@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Cat = ({cat,catDelete}) => {
+const Cat = ({cat,dispatch}) => {
     return (
         <div>
             {cat}
-            <button onClick={()=>catDelete(cat)}>delete</button>
+            <button onClick={()=>dispatch({type:'catDelete',payload:cat})}>delete</button>
         </div>
     );
 };
