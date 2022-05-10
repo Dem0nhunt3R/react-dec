@@ -1,0 +1,8 @@
+.box{
+    display: flex;
+    justify-content: space-around;
+}
+.pets{
+    display: flex;
+    justify-content: space-around;
+}
