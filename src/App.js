@@ -15,19 +15,22 @@ const reducer = (state, action) => {
 
     switch (type) {
         case 'catSubmit':
+            console.log(payload)
             return {...state, cats: [...cats, payload]};
         case 'dogSubmit':
             return {...state, dogs: [...dogs, payload]};
         case'dogDelete':
             const indexOfDogs = dogs.indexOf(payload);
-            dogs.splice(indexOfDogs, 1);
-            console.log('splicing dogs')
-            return {...state, dogs: [...dogs]};
+            if (dogs.includes(payload)) {
+                dogs.splice(indexOfDogs, 1);
+            }
+            return {...state, dogs};
         case'catDelete':
             const indexOfCats = cats.indexOf(payload);
-            cats.splice(indexOfCats, 1);
-            console.log('splicing cat ' + indexOfCats)
-            return {...state, cats: [...cats]};
+            if (cats.includes(payload)) {
+                cats.splice(indexOfCats, 1);
+            }
+            return {...state, cats};
         default:
             return state;
     }
@@ -38,8 +41,7 @@ const App = () => {
     const [state, dispatch] = useReducer(reducer, [], init);
 
     useEffect(() => {
-
-    }, [state.dogs, state.cats]);
+    }, [state]);
 
 
     const catSubmit = (cat) => {
@@ -94,8 +96,7 @@ const App = () => {
             <div className={css.pets}>
                 <div>
                     Cats:
-                    {state.cats && state.cats.map(cat => <Cat
-                        key={state.cats.indexOf(cat)}
+                    {state.cats.map(cat => <Cat
                         cat={cat}
                         dispatch={dispatch}
                     />)}
@@ -103,7 +104,6 @@ const App = () => {
                 <div>
                     Dogs:
                     {state.dogs && state.dogs.map(dog => <Dog
-                        key={state.dogs.indexOf(dog)}
                         dog={dog}
                         dogDelete={dogDelete}
                     />)}
