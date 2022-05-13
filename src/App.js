@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer} from 'react';
+import React, {useReducer} from 'react';
 
 import css from './App.module.css';
 import {Dog} from "./components/Dog";
@@ -15,22 +15,16 @@ const reducer = (state, action) => {
 
     switch (type) {
         case 'catSubmit':
-            console.log(payload)
             return {...state, cats: [...cats, payload]};
         case 'dogSubmit':
             return {...state, dogs: [...dogs, payload]};
+
         case'dogDelete':
-            const indexOfDogs = dogs.indexOf(payload);
-            if (dogs.includes(payload)) {
-                dogs.splice(indexOfDogs, 1);
-            }
-            return {...state, dogs};
+            const dogsFilter = dogs.filter(dog => payload.id !== dog.id);
+            return {...state, dogs: [...dogsFilter]};
         case'catDelete':
-            const indexOfCats = cats.indexOf(payload);
-            if (cats.includes(payload)) {
-                cats.splice(indexOfCats, 1);
-            }
-            return {...state, cats};
+            const catsFilter = cats.filter(cat => cat.id !== payload.id);
+            return {...state, cats: [...catsFilter]};
         default:
             return state;
     }
@@ -40,17 +34,14 @@ const App = () => {
     const {register, reset, handleSubmit} = useForm();
     const [state, dispatch] = useReducer(reducer, [], init);
 
-    useEffect(() => {
-    }, [state]);
-
-
     const catSubmit = (cat) => {
-        const {catName} = cat;
+        cat.id = state.cats.length;
+        const {id, catName} = cat;
         if (catName) {
             if (state.cats.includes(catName)) {
                 alert('already exist');
             } else {
-                dispatch({type: 'catSubmit', payload: catName})
+                dispatch({type: 'catSubmit', payload: {id, catName}})
                 reset();
             }
         } else {
@@ -59,12 +50,13 @@ const App = () => {
     }
 
     const dogSubmit = (dog) => {
-        const {dogName} = dog;
+        dog.id = state.dogs.length;
+        const {id, dogName} = dog;
         if (dogName) {
             if (state.dogs.includes(dogName)) {
                 alert('already exist');
             } else {
-                dispatch({type: 'dogSubmit', payload: dogName})
+                dispatch({type: 'dogSubmit', payload: {id, dogName}})
                 reset();
             }
         } else {
@@ -96,7 +88,8 @@ const App = () => {
             <div className={css.pets}>
                 <div>
                     Cats:
-                    {state.cats.map(cat => <Cat
+                    {state.cats && state.cats.map(cat => <Cat
+                        key={cat.id}
                         cat={cat}
                         dispatch={dispatch}
                     />)}
@@ -104,6 +97,7 @@ const App = () => {
                 <div>
                     Dogs:
                     {state.dogs && state.dogs.map(dog => <Dog
+                        key={dog.id}
                         dog={dog}
                         dogDelete={dogDelete}
                     />)}
