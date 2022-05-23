@@ -1,13 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useSelector} from "react-redux";
 import {Dog} from "./Dog";
 
 const Dogs = () => {
-    const {dogs} = useSelector(state => state.dog);
-
-    useEffect(() => {
-
-    }, [dogs]);
+    const {dogs} = useSelector(({dog}) => dog);
 
     return (
         <div>

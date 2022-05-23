@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {dogActions} from "../redux/slices/dog.slice";
+import {dogActions} from "../redux";
 
 const Dog = ({dog}) => {
     const {id, name} = dog;
@@ -9,7 +9,7 @@ const Dog = ({dog}) => {
     return (
         <div>
             {id}. {name}
-            <button onClick={() => dispatch(dogActions.updateDog({dog}))}>update</button>
+            <button onClick={() => {dispatch(dogActions.setDogForUpdate({dog}))}}>update</button>
             <button onClick={() => dispatch(dogActions.deleteDog({id}))}>delete</button>
         </div>
     );

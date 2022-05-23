@@ -5,7 +5,7 @@ import dogReducer from "./slices/dog.slice";
 
 const rootReducer = combineReducers({
     cat: catReducer,
-    dog: dogReducer
+    dog: dogReducer,
 });
 const store = configureStore({
     reducer: rootReducer
